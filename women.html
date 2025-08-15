@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Women – Raffay Clothing</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+</head>
+<STYle>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: #fafafa;
+    color: #111;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: 'Playfair Display', serif;
+  }
+
+  /* Header */
+  .hero-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+    background: #000;
+    color: white;
+  }
+
+  .logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+  }
+
+  nav ul {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+  }
+
+  nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  nav ul li a:hover {
+    color: #f5a623;
+  }
+
+  /* Hero */
+  .hero {
+    background: linear-gradient(to right, #fceabb, #f8b500);
+    padding: 80px 5%;
+    text-align: center;
+    color: #111;
+  }
+
+  .hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+  }
+
+  .hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 25px;
+  }
+
+  .product-grid-large {
+    background: url(white_pink.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+  /* New 2-column large product layout */
+  .product-grid-large {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    margin-top: 40px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .product-card-large {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease;
+    text-align: center;
+  }
+
+  .product-card-large:hover {
+    transform: translateY(-8px);
+  }
+
+  .product-card-large img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 15px;
+    margin-bottom: 20px;
+  }
+
+  .product-card-large h3 {
+    font-size: 1.5rem;
+    margin: 15px 0 10px;
+    color: #111;
+  }
+
+  .product-card-large p {
+    font-size: 1.3rem;
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+
+  .product-card-large .btn {
+    background: #000;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1.1rem;
+    transition: background 0.3s;
+  }
+
+  .product-card-large .btn:hover {
+    background: #f5a623;
+    color: #000;
+  }
+
+  /* Responsive for smaller screens */
+  @media (max-width: 768px) {
+    .product-grid-large {
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+
+    .product-card-large {
+      padding: 20px;
+    }
+
+    .product-card-large img {
+      height: 300px;
+    }
+  }
+
+  /* Original product grid for backward compatibility */
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+  }
+
+  .product-card {
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+  }
+
+  .product-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .product-card img {
+    width: 100%;
+    border-radius: 12px;
+    margin-bottom: 15px;
+  }
+</STYle>
+
+<body>
+  <header class="hero-header">
+    <div class="logo">
+      <img src="logo.png" alt="Logo" style="height:60px;">
+    </div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="men.html">Men</a></li>
+        <li><a href="women.html">Women</a></li>
+        <li><a href="shop.html">All Products</a></li>
+      </ul>
+    </nav>
+  </header>
+
+
+
+  <section class="featured">
+    <h2>Women's Fashion Collection</h2>
+    <div class="product-grid-large">
+      <!-- 20 Women's Products -->
+      <div class="product-card-large">
+        <img src="https://via.placeholder.com/300x400?text=Women+Product+1" alt="Women's Floral Dress">
+        <h3>Floral Summer Dress</h3>
+        <p>$59.99</p>
+        <a href="#" class="btn">Add to Cart</a>
+      </div>
+
+      <div class="product-card-large">
+        <img src="white_pink.png" alt="Women's Blouse">
+        <h3>Elegant Silk Blouse</h3>
+        <p>$69.99</p>
+        <a href="#" class="btn">Add to Cart</a>
+      </div>
+
+      <div class="product-card-large">
+        <img src="https://via.placeholder.com/300x400?text=Women+Product+3" alt="Women's Skirt">
+        <h3>Pleated Midi Skirt</h3>
+        <p>$49.99</p>
+        <a href="#" class="btn">Add to Cart</a>
+      </div>
+
+      <div class="product-card-large">
+        <img src="https://via.placeholder.com/300x400?text=Women+Product+4" alt="Women's Jeans">
+        <h3>High-Waist Jeans</h3>
+        <p>$64.99</p>
+        <a href="#" class="btn">Add to Cart</a>
+      </div>
+
+      <div class="product-card-large">
+        <img src="https://via.placeholder.com/300x400?text=Women+Product+5" alt="Women's Cardigan">
+        <h3>Cozy Knit Cardigan</h3>
+        <p>$74.99</p>
+        <a href="#" class="btn">Add to Cart</a>
+      </div>
+
+      <div class="product-card-large">
+        <img src="https://via.placeholder.com/300x400?text=Women+Product+6" alt="Women's T-Shirt">
+        <h3>Basic Cotton Tee</h3>
+        <p>$24.99</p>
+        <a href="#" class="btn">Add to Cart</a>
+      </div>
+
+      <div class="product-card-large">
+        <img src="https://via.placeholder.com/300x400?text=Women+Product+7" alt="Women's Jacket">
+        <h3>Trench Coat</h3>
+        <p>$119.99</p>
+        <a href="#" class="btn">Add to Cart</a>
+      </div>
+
+      <div class="product-card-large">
+        <img src="https://via.placeholder.com/300x400?text=Women+Product+8" alt="Women's Leggings">
+        <h3>Yoga Leggings</h3>
+        <p>$39.99</p>
+        <a href="#" class="btn">Add to Cart</a>
+      </div>
+
+      <div class="product-card-large">
+        <img src="https://via.placeholder.com/300x400?text=Women+Product+9" alt="Women's Sweater">
+        <h3>Cashmere Pullover</h3>
+        <p>$89.99</p>
+        <a href="#" class="btn">Add to Cart</a>
+      </div>
+
+      <div class="product-card-large">
+        <img src="https://via.placeholder.com/300x400?text=Women+Product+10" alt="Women's Blazer">
+        <h3>Office Blazer</h3>
+        <p>$99.99</p>
+        <a href="#" class="btn">Add to Cart</a>
+      </div>
+
+      <div class="product-card-large">
+        <img src="https://via.placeholder.com/300x400?text=Women+Product+11" alt="Women's Jumpsuit">
+        <h3>Elegant Jumpsuit</h3>
+        <p>$79.99</p>
+        <a href="#" class="btn">Add to Cart</a>
+      </div>
+
+      <div class="product-card-large">
+        <img src="https://via.placeholder.com/300x400?text=Women+Product+12" alt="Women's Top">
+        <h3>Lace Blouse</h3>
+        <p>$54.99</p>
+        <a href="#" class="btn">Add to Cart</a>
+      </div>
+
+      <div class="product-card-large">
+        <img src="https://via.placeholder.com/300x400?text=Women+Product+13" alt="Women's Pants">
+        <h3>Wide Leg Trousers</h3>
+        <p>$69.99</p>
+        <a href="#" class="btn">Add to Cart</a>
+      </div>
+
+      <div class="product-card-large">
+        <img src="https://via.placeholder.com/300x400?text=Women+Product+14" alt="Women's Coat">
+        <h3>Wool Coat</h3>
+        <p>$149.99</p>
+        <a href="#" class="btn">Add to Cart</a>
+      </div>
+
+      <div class="product-card-large">
+        <img src="https://via.placeholder.com/300x400?text=Women+Product+15" alt="Women's Romper">
+        <h3>Summer Romper</h3>
+        <p>$44.99</p>
+        <a href="#" class="btn">Add to Cart</a>
+      </div>
+
+      <div class="product-card-large">
+        <img src="https://via.placeholder.com/300x400?text=Women+Product+16" alt="Women's Skirt">
+        <h3>Maxi Skirt</h3>
+        <p>$59.99</p>
+        <a href="#" class="btn">Add to Cart</a>
+      </div>
+
+      <div class="product-card-large">
+        <img src="https://via.placeholder.com/300x400?text=Women+Product+17" alt="Women's Top">
+        <h3>Off-Shoulder Top</h3>
+        <p>$34.99</p>
+        <a href="#" class="btn">Add to Cart</a>
+      </div>
+
+      <div class="product-card-large">
+        <img src="https://via.placeholder.com/300x400?text=Women+Product+18" alt="Women's Dress">
+        <h3>Cocktail Dress</h3>
+        <p>$89.99</p>
+        <a href="#" class="btn">Add to Cart</a>
+      </div>
+
+      <div class="product-card-large">
+        <img src="https://via.placeholder.com/300x400?text=Women+Product+19" alt="Women's Shoes">
+        <h3>High Heel Pumps</h3>
+        <p>$79.99</p>
+        <a href="#" class="btn">Add to Cart</a>
+      </div>
+
+      <div class="product-card-large">
+        <img src="https://via.placeholder.com/300x400?text=Women+Product+20" alt="Women's Bag">
+        <h3>Designer Handbag</h3>
+        <p>$129.99</p>
+        <a href="#" class="btn">Add to Cart</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 Raffay Clothing – All rights reserved.</p>
+  </footer>
+</body>
+
+</html>

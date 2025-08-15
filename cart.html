@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Cart – Raffay Clothing</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f8f9fa;
+        }
+
+        .cart-container {
+            max-width: 900px;
+            margin: 60px auto;
+            background: #fff;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        h2 {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #eee;
+            padding: 20px 0;
+        }
+
+        .cart-item:last-child {
+            border: none;
+        }
+
+        .cart-item p {
+            font-size: 1.1rem;
+            flex: 1;
+        }
+
+        .remove-btn {
+            background: #eee;
+            padding: 8px 18px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .remove-btn:hover {
+            background: #ff4d4d;
+            color: white;
+        }
+
+        .total-box {
+            text-align: right;
+            margin-top: 30px;
+            font-size: 1.3rem;
+            font-weight: bold;
+        }
+
+        .checkout-btn {
+            margin-top: 20px;
+            float: right;
+            background: black;
+            color: white;
+            padding: 12px 28px;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        .checkout-btn:hover {
+            background: #f5a623;
+            color: black;
+        }
+
+        .empty-cart {
+            text-align: center;
+            color: #888;
+            padding: 60px 0;
+            font-size: 1.2rem;
+        }
+
+        @media (max-width: 600px) {
+            .cart-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .remove-btn {
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cart-container">
+        <h2>Your Cart</h2>
+        <div id="cart-list"></div>
+        <div id="cart-total" class="total-box"></div>
+        <button id="checkoutBtn" class="checkout-btn" style="display:none;"
+            onclick="window.location.href='payment.html'">Checkout</button>
+    </div>
+
+    <script src="/js/tracking.js"></script>
+    <script src="/js/cart-tracking.js"></script>
+    <script>
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const cartList = document.getElementById('cart-list');
+        const cartTotal = document.getElementById('cart-total');
+        const checkoutBtn = document.getElementById('checkoutBtn');
+
+        // Track cart view
+        if (window.analyticsTracker) {
+            window.analyticsTracker.trackCartView();
+        }
+
+        if (cart.length === 0) {
+            cartList.innerHTML = `<div class="empty-cart">🛒 Your cart is empty.<br><a href="shop.html" style="color:#000;">Go shopping</a></div>`;
+            cartTotal.style.display = "none";
+        } else {
+            let total = 0;
+            cart.forEach((item, i) => {
+                const price = parseFloat(item.price.replace(/[^0-9.]/g, ""));
+                total += price;
+                const div = document.createElement('div');
+                div.className = 'cart-item';
+                div.innerHTML = `
+          <p>${item.name}</p>
+          <p>${item.price}</p>
+          <button class="remove-btn" onclick="removeItem(${i})">Remove</button>
+        `;
+                cartList.appendChild(div);
+            });
+            cartTotal.innerText = `Total: $${total.toFixed(2)}`;
+            checkoutBtn.style.display = "inline-block";
+        }
+
+        function removeItem(index) {
+            if (confirm("Remove this item from cart?")) {
+                const item = cart[index];
+                const price = parseFloat(item.price.replace(/[^0-9.]/g, ""));
+
+                // Track removal
+                if (window.analyticsTracker) {
+                    window.analyticsTracker.trackCartEvent(
+                        item.id || item.productId,
+                        'remove_from_cart',
+                        1,
+                        price,
+                        item.size,
+                        item.color
+                    );
+                }
+
+                cart.splice(index, 1);
+                localStorage.setItem('cart', JSON.stringify(cart));
+                location.reload();
+            }
+        }
+
+        // Enhanced checkout with tracking
+        checkoutBtn.addEventListener('click', function () {
+            if (window.analyticsTracker) {
+                window.analyticsTracker.trackCartEvent(null, 'proceed_to_checkout');
+            }
+            window.location.href = 'payment.html';
+        });
+
+        // Track cart abandonment
+        window.addEventListener('beforeunload', function () {
+            if (cart.length > 0 && window.analyticsTracker) {
+                window.analyticsTracker.trackCartEvent(null, 'cart_abandon');
+            }
+        });
+    </script>
+</body>
+
+</html>
